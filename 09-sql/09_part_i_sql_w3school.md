@@ -47,6 +47,21 @@ CustomerName | 	TOTAL
 Ernst Handel | 	10
 
 3. Which supplier has the highest average product price?
+### SQL Code
+
+```sql
+SELECT SupplierName, AVG(Price) 
+FROM Suppliers s JOIN Products p
+ON s.SupplierID = p.SupplierID
+GROUP BY SupplierName
+ORDER BY 2 DESC LIMIT 1;
+``` 
+### Output
+
+
+SupplierName | 		AVG(Price)
+------------ | -------------
+Aux joyeux ecclésiastiques | 	140.75
 
 4. How many different countries are all the customers from? (*Hint:* consider [DISTINCT](http://www.w3schools.com/sql/sql_distinct.asp).)
 
