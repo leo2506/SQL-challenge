@@ -65,6 +65,18 @@ Aux joyeux ecclésiastiques | 	140.75
 
 4. How many different countries are all the customers from? (*Hint:* consider [DISTINCT](http://www.w3schools.com/sql/sql_distinct.asp).)
 
+### SQL Code
+
+```sql
+SELECT COUNT(DISTINCT Country) 
+FROM Customers
+``` 
+### Output
+
+COUNT(DISTINCT Country)
+| -----
+21
+
 5. What category appears in the most orders?
 
 6. What was the total cost for each order?
