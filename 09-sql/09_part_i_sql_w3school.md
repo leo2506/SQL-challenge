@@ -9,6 +9,24 @@ This challenge uses the [W3Schools SQL playground](http://www.w3schools.com/sql/
 
 1. Which customers are from the UK?
 
+### SQL Code
+
+```sql
+SELECT CustomerName, COUNT(OrderID) as TOTAL
+FROM Customers c JOIN Orders o
+ON c.CustomerID = o.CustomerID
+GROUP BY CustomerName
+ORDER BY 2 DESC 
+LIMIT 1;
+``` 
+### Output
+
+```
+CustomerName | 	TOTAL
+------------ | -------------
+Ernst Handel | 	10
+```
+
 2. What is the name of the customer who has the most orders?
 
 3. Which supplier has the highest average product price?
