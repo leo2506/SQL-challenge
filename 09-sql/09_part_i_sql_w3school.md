@@ -79,6 +79,7 @@ COUNT(DISTINCT Country)
 
 5. What category appears in the most orders?
 
+### SQL Code
 ```sql
 SELECT CategoryName, COUNT(DISTINCT OrderID) total
 FROM OrderDetails od JOIN Products p
@@ -95,6 +96,7 @@ Beverages | 	80
 
 6. What was the total cost for each order?
 
+### SQL Code
 ```sql
 SELECT OrderID, SUM(Price*Quantity) TotalCost FROM 
 OrderDetails od JOIN Products p
@@ -302,10 +304,54 @@ ORDER BY 2 DESC;
 |10422|62.46|
 |10271|60|
 
-
-
 7. Which employee made the most sales (by total price)?
 
+### SQL Code
+```sql
+SELECT FirstName || " " || Lastname Name, SUM(Price*Quantity) Sales
+FROM OrderDetails od JOIN Orders o 
+USING (OrderID) JOIN Employees e
+USING (EmployeeID) JOIN Products p
+USING (ProductID)
+GROUP BY Name
+ORDER BY 2 DESC LIMIT 1
+``` 
+### Output
+
+|Name|Sales|
+|--- |--- |
+|Margaret Peacock|105696.49999999999|
+
 8. Which employees have BS degrees? (*Hint:* look at the [LIKE](http://www.w3schools.com/sql/sql_like.asp) operator.)
+### SQL Code
+```sql
+SELECT EmployeeID, FirstName || " " || LastName Name FROM Employees
+WHERE Notes LIKE "%B_S%"
+``` 
+### Output
+
+|EmployeeID|Name|
+|--- |--- |
+|2|Andrew Fuller|
+|3|Janet Leverling|
+|8|Laura Callahan|
 
 9. Which supplier of three or more products has the highest average product price? (*Hint:* look at the [HAVING](http://www.w3schools.com/sql/sql_having.asp) operator.)
+
+### SQL Code
+```sql
+SELECT SupplierID, SupplierName, AVG(Price)
+FROM Suppliers s JOIN Products p 
+USING(SupplierID) 
+GROUP BY SupplierID, SupplierName
+HAVING COUNT(ProductID) >= 3
+ORDER BY 3 DESC LIMIT 1
+``` 
+### Output
+
+|SupplierID|SupplierName|AVG(Price)|
+|--- |--- |--- |
+|4|Tokyo Traders|46|
+
+
+
