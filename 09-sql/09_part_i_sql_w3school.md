@@ -21,11 +21,10 @@ LIMIT 1;
 ``` 
 ### Output
 
-```
 CustomerName | 	TOTAL
 ------------ | -------------
 Ernst Handel | 	10
-```
+
 
 2. What is the name of the customer who has the most orders?
 
